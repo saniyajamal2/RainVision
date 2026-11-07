@@ -1,0 +1,116 @@
+/* ---------- Whole page ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f9fb;
+  color: #1f3a4d;
+  text-align: center;
+  margin: 0;
+  padding: 0 20px 20px 20px;
+}
+
+h1 {
+  color: #0b7285;
+}
+
+h2 {
+  color: #1f3a4d;
+  scroll-margin-top: 60px;     /* keeps headings visible below the navbar */
+}
+
+/* ---------- Navigation bar ---------- */
+.navbar {
+  position: sticky;            /* stays at the top while scrolling */
+  top: 0;
+  background-color: #0b7285;
+  margin: 0 -20px 20px -20px;  /* stretches across the full page width */
+  padding: 12px 20px;
+  z-index: 10;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 15px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Statistic cards ---------- */
+.cards {
+  display: flex;               /* puts the cards in a row */
+  flex-wrap: wrap;             /* moves cards to the next line if space is short */
+  justify-content: center;
+  gap: 16px;                   /* space between cards */
+  margin: 20px auto;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #cfe3e8;
+  border-radius: 10px;         /* rounded corners */
+  padding: 14px 20px;
+  min-width: 170px;
+}
+
+.card-label {
+  margin: 0;
+  font-size: 14px;
+  color: #4a6572;
+}
+
+.card-value {
+  margin: 8px 0 0 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0b7285;
+}
+
+.card-note {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #4a6572;
+}
+
+/* ---------- Tables ---------- */
+table {
+  margin: 0 auto;              /* centres the table */
+  border-collapse: collapse;   /* joins the borders into single lines */
+  background-color: white;
+}
+
+th, td {
+  border: 1px solid #cfe3e8;   /* light border around every cell */
+  padding: 8px 16px;           /* space inside each cell */
+}
+
+th {
+  background-color: #0b7285;   /* teal heading row */
+  color: white;
+}
+
+td:first-child {
+  text-align: left;            /* subdivision names look better left-aligned */
+}
+
+/* ---------- Tables with long text (DSA section) ---------- */
+.text-table td {
+  text-align: left;
+}
+
+/* ---------- Text boxes (About section) ---------- */
+.text-box {
+  background-color: white;
+  border: 1px solid #cfe3e8;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  text-align: left;
+}
+
+.text-box li {
+  margin-bottom: 6px;
+}

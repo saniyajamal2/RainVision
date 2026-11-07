@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RainVision</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <a href="#dashboard">Dashboard</a>
+    <a href="#trend">Trend</a>
+    <a href="#monsoon">Monsoon</a>
+    <a href="#search">Search</a>
+    <a href="#ranking">Sorting</a>
+    <a href="#dsa">DSA</a>
+    <a href="#about">About Dataset</a>
+  </nav>
+
+  <h1>RainVision</h1>
+  <p>Indian Rainfall Analysis Using Data Structures and Algorithms</p>
+  <p id="record-count">Loading data...</p>
+
+  <h2 id="dashboard">Dashboard</h2>
+  <div class="cards">
+    <div class="card">
+      <p class="card-label">Total Subdivisions</p>
+      <p class="card-value" id="stat-subdivisions">-</p>
+    </div>
+    <div class="card">
+      <p class="card-label">Years Covered</p>
+      <p class="card-value" id="stat-years">-</p>
+    </div>
+    <div class="card">
+      <p class="card-label">Average Annual Rainfall</p>
+      <p class="card-value" id="stat-average">-</p>
+    </div>
+    <div class="card">
+      <p class="card-label">Highest Annual Rainfall</p>
+      <p class="card-value" id="stat-highest">-</p>
+      <p class="card-note" id="stat-highest-note"></p>
+    </div>
+    <div class="card">
+      <p class="card-label">Lowest Annual Rainfall</p>
+      <p class="card-value" id="stat-lowest">-</p>
+      <p class="card-note" id="stat-lowest-note"></p>
+    </div>
+  </div>
+
+  <h2 id="trend">Annual Rainfall Trend</h2>
+  <div style="max-width: 800px; margin: 0 auto;">
+    <canvas id="trend-chart"></canvas>
+  </div>
+
+  <h2>Average Monthly Rainfall</h2>
+  <div style="max-width: 700px; margin: 0 auto;">
+    <canvas id="monthly-chart"></canvas>
+  </div>
+
+  <h2 id="monsoon">Monsoon Analysis</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Season</th>
+        <th>Months</th>
+        <th>Average (mm)</th>
+        <th>Share of the 4 seasons</th>
+      </tr>
+    </thead>
+    <tbody id="season-table-body">
+    </tbody>
+  </table>
+  <p id="monsoon-summary"></p>
+
+  <h2>First 10 Records</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Subdivision</th>
+        <th>Year</th>
+        <th>Annual (mm)</th>
+        <th>JJAS (mm)</th>
+      </tr>
+    </thead>
+    <tbody id="records-table-body">
+    </tbody>
+  </table>
+
+  <h2 id="search">Search a Subdivision</h2>
+  <input type="text" id="search-input" placeholder="Type a subdivision name">
+  <button id="linear-search-button">Linear Search</button>
+  <button id="binary-search-button">Binary Search</button>
+  <p id="search-result"></p>
+  <p id="binary-search-result"></p>
+
+  <h2>Average Annual Rainfall by Subdivision</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Subdivision</th>
+        <th>Average Annual (mm)</th>
+        <th>Years with data</th>
+      </tr>
+    </thead>
+    <tbody id="averages-table-body">
+    </tbody>
+  </table>
+
+  <h2 id="ranking">Rank Subdivisions (Merge Sort)</h2>
+  <button id="merge-high-button">Highest to Lowest</button>
+  <button id="merge-low-button">Lowest to Highest</button>
+  <p id="merge-sort-info"></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Subdivision</th>
+        <th>Average Annual (mm)</th>
+      </tr>
+    </thead>
+    <tbody id="ranking-table-body">
+    </tbody>
+  </table>
+
+  <h2>Compare Sorting Algorithms</h2>
+  <button id="compare-sorts-button">Compare Insertion Sort and Merge Sort</button>
+  <p id="compare-info"></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Algorithm</th>
+        <th>Comparisons made</th>
+        <th>Time complexity</th>
+        <th>Extra space</th>
+      </tr>
+    </thead>
+    <tbody id="compare-table-body">
+    </tbody>
+  </table>
+
+  <h2 id="dsa">DSA Behind RainVision</h2>
+  <table class="text-table">
+    <thead>
+      <tr>
+        <th>Concept</th>
+        <th>Where it is used in RainVision</th>
+        <th>Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Array</td>
+        <td>Stores all 4188 records, the 12 monthly values of each record, and the list of 36 subdivision names. Loops visit the items one by one.</td>
+        <td>Access by index: O(1). Visiting all items: O(n).</td>
+      </tr>
+      <tr>
+        <td>Object</td>
+        <td>Each CSV row is stored as an object with named properties such as subdivision, year and annual.</td>
+        <td>Reading a property: O(1).</td>
+      </tr>
+      <tr>
+        <td>Aggregation (running totals)</td>
+        <td>Averages, highest and lowest values, monthly, yearly and seasonal averages. One loop keeps a total and a count and skips missing values.</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Linear Search</td>
+        <td>Finds a subdivision by checking the names one by one, in the order of the CSV. The comparisons are counted.</td>
+        <td>Best: O(1). Worst: O(n).</td>
+      </tr>
+      <tr>
+        <td>Binary Search</td>
+        <td>Finds a subdivision in the A to Z sorted list by repeatedly halving the search area. It needs sorted data.</td>
+        <td>Best: O(1). Worst: O(log n).</td>
+      </tr>
+      <tr>
+        <td>Insertion Sort</td>
+        <td>Sorts the subdivision names A to Z (needed for Binary Search). Also used in the sorting comparison table.</td>
+        <td>Worst: O(n&sup2;). Extra space: O(1).</td>
+      </tr>
+      <tr>
+        <td>Merge Sort</td>
+        <td>Ranks the 36 subdivisions by average annual rainfall. It splits the list in halves, sorts each half and merges them.</td>
+        <td>O(n log n). Extra space: O(n).</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Searching, sorting and all calculations are written in JavaScript in this
+    project. No built-in sort or search function is used for them.
+    The free library Chart.js is used only to draw the charts.
+  </p>
+
+  <h2 id="about">About the Dataset</h2>
+  <div class="text-box">
+    <ul>
+      <li><b>Name:</b> India's Rainfall Data (file: Sub_Division_IMD_2017.csv), downloaded from Kaggle.</li>
+      <li><b>Size:</b> 4188 records and 19 columns, for 36 meteorological subdivisions.</li>
+      <li><b>Time period:</b> 1901 to 2017.</li>
+      <li><b>Columns:</b> SUBDIVISION, YEAR, JAN to DEC (monthly rainfall), ANNUAL, JF (Jan-Feb), MAM (Mar-May), JJAS (Jun-Sep, the monsoon season) and OND (Oct-Dec).</li>
+      <li><b>Unit:</b> rainfall is measured in millimetres (mm).</li>
+    </ul>
+    <p><b>Limitations</b></p>
+    <ul>
+      <li>The rows are meteorological subdivisions, not states. Some are a whole state, some are only a part of a state.</li>
+      <li>Some values are missing (written as NA). Missing values are skipped in the calculations and are never treated as zero. A zero in the data means no rain.</li>
+      <li>Not every subdivision has all 117 years. For example, Arunachal Pradesh has fewer years with an annual value.</li>
+      <li>The yearly trend uses 34 to 36 subdivisions per year, so it is not based on exactly the same subdivisions in every year.</li>
+      <li>The data ends in 2017.</li>
+      <li>One subdivision name is spelled "Matathwada" in the dataset. It is shown here exactly as in the file.</li>
+    </ul>
+  </div>
+
+  <!-- Chart.js: free third-party library used ONLY to draw charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="dashboard.js"></script>
+  <script src="monsoon.js"></script>
+  <script src="script.js"></script>
+  <script src="sortcompare.js"></script>
+</body>
+</html>
